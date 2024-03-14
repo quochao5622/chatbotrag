@@ -1,0 +1,27 @@
+openai~=1.6.1
+langchain
+PyPDF2
+python-dotenv~=1.0.0
+streamlit~=1.29.0
+altair
+tiktoken
+docx2txt
+openai
+param
+langchain[docarray]
+chromadb
+# crawler
+requests
+#login
+streamlit-authenticator
+# pgsql
+psycopg2-binary
+sqlalchemy
+psycopg2~=2.9.9
+transformers~=4.37.0
+torch
+bcrypt
+sentence_transformers
+FlagEmbedding
+lark
+pyvi
