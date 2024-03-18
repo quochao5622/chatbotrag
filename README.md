@@ -13,6 +13,7 @@ or file dump-postgres-202403130754.sql
 Create .env file
 Config connection to database with information from file .env.example 
 Besides, add OPENAI_API_KEY in .env file
+Login information: quochao/123456, phanhien/123456
 ## Step 5: Run local project
 `streamlit run Chatbot.py`
 ## Step 6: Upload files and use if necessary
