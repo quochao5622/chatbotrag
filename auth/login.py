@@ -52,8 +52,6 @@ def logout_partial():
         st.session_state['loggedIn'] = False
         st.sidebar.success('Logout successful!')
         st.rerun()  # Force a re-run to update the UI
-    if st.sidebar.button('Clear Cache'):
-        st.cache_resource.clear()
 
 def login():
     if 'loggedIn' not in st.session_state:

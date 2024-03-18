@@ -3,7 +3,7 @@ import os
 from langchain_community.vectorstores.chroma import Chroma
 
 from auth.login import login
-from connectdb import connect_to_postgresql
+from connectdb import connect_to_postgresql, load_chroma
 from brain import get_index_for_files, get_embedding
 import streamlit as st
 import openai
@@ -11,7 +11,7 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 import pandas as pd
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
-
+@st.cache_data
 def create_vectordb(files, filenames):
     if not files or not filenames:
         st.error("No files provided.")
@@ -25,7 +25,6 @@ def create_vectordb(files, filenames):
             if not vector_data:
                 st.error("No data found in the uploaded files.")
                 return None
-            flag = ''
             flag = get_index_for_files(vector_data, filenames)
             return flag
     except Exception as e:
@@ -41,7 +40,7 @@ if connection:
     connection.close()
 else:
     st.warning("Failed to connect to PostgreSQL.")
-   
+
 if is_logged_in:
     
     # File uploader for PDF and text files
@@ -59,14 +58,7 @@ if is_logged_in:
         # Create and store flag in session_state
         st.session_state.flag = create_vectordb(uploaded_files, file_names)
 
-    # collection = Chroma(
-    #     collection_name="split_parents",
-    #     embedding_function=get_embedding(),
-    #     persist_directory="./chroma_db"
-    # )
-    collection = Chroma(persist_directory="./chromadb", 
-                        embedding_function=get_embedding(), 
-                        collection_name="rag")
+    collection = load_chroma()
 
     
     # Get the data from the collection

@@ -1,0 +1,3 @@
+[server]
+port = 89
+maxMessageSize = 2048

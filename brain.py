@@ -1,20 +1,22 @@
 from io import BytesIO
 from pathlib import Path
 from typing import Tuple, List
+
 import PyPDF2
-import chromadb.utils.embedding_functions as embedding_functions
+import streamlit as st
 from langchain.docstore.document import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from sentence_transformers import SentenceTransformer
-# from langchain.schema import Document
-from langchain_community.vectorstores import Chroma
-import chromadb
-from data_preprocessing import tien_xu_li
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
+from langchain_community.vectorstores import Chroma
 from scipy.spatial.distance import cosine
+
+from data_preprocessing import tien_xu_li
+
+
 # Hàm để tính cosine similarity
 def calculate_cosine_similarity(embed_text, embed_query):
     return 1 - cosine(Convert(embed_text), embed_query)
+@st.cache_resource
 def get_embedding():
     model_name = "BAAI/bge-m3"
     encode_kwargs = {'normalize_embeddings': True}

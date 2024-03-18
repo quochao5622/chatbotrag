@@ -5,23 +5,24 @@
 `.\venv\Scripts\activate`
 ## Step 3: Install library
 `pip install -r .\requirements.txt`
-## Step 4: Get file csv from drive
-Go to link below to download file and put it to folder data
+## Step 4: Load database 
+Go to link below to download sql file add to PostgreSQL
 https://drive.google.com/drive/folders/10q2MExkVMS3LgR9sUOJYp_aDVxC5Sq63?usp=sharing
+or file dump-postgres-202403130754.sql
+## Step 5: Connect database 
+Create .env file
+Config connection to database with information from file .env.example 
+Besides, add OPENAI_API_KEY in .env file
 ## Step 5: Run local project
 `streamlit run Chatbot.py`
-## Step 6: Upload file and use
-
-Note: Currently there are only 4097 tokens, about 3 consecutive questions in one cha
+## Step 6: Upload files and use if necessary
 
 ![Result](image.png)
 
-
-
 ### Các câu hỏi dùng để thử hỏi:
-1. Hết hạn 03 tháng, có cần sát hạch lại để được cấp lại bằng lái xe B2? Nếu sát hạch lại có cần nộp giấy khám sức khỏe hay không?
-2. Để đăng ký tham gia đấu giá biển số xe đẹp đối với xe ô tô thì phải đáp ứng những điều kiện nào?
-3. Thủ tục cấp đổi chứng nhận đăng ký, biển số xe tại Cục Cảnh sát giao thông mới nhất được thực hiện như thế nào?
+1. Làn đường là gì?
+2. Vượt đèn đỏ đối với xe máy bị phạt bao nhiêu
+3. Đi ngược chiều bị phạt bao nhiêu?
 
 
 
